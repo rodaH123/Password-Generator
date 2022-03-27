@@ -54,6 +54,7 @@ function generatePassword(){
   var certain =[]
   if (!passOptions) return null
   
+  //Conditional statements on password instructions 
   if (passOptions.upperConfirm){
     possible = possible.concat(upperCase)
     certain.push(getRandom(upperCase))
@@ -70,6 +71,8 @@ function generatePassword(){
   if (passOptions.symbolConfirm){
     possible = possible.concat(symbols)
     certain.push(getRandom(symbols))
+
+    //Conditional statements on password prompt instructions from the Array and actions to complete 
   }
   for(var i = 0; i < passOptions.passwordLength; i++){
     var possibleChar = getRandom(possible)
