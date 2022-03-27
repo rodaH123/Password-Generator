@@ -29,7 +29,7 @@ function criteria(){
   var numberConfirm = window.confirm("Would you like Numbers in your password?")
   var symbolConfirm = window.confirm ("Would you like Symbols in your password?")
 
-  // Created function to verify that character types are adhering to password criteria and if not, prompt is created to remind password criteria.
+  // Created a conditional statement to verify that character types are adhering to password criteria and if not, prompt is created to remind password criteria.
 if(upperConfirm === false && lowerConfirm === false && numberConfirm === false && symbolConfirm === false) {
     window.alert("Your password must include at least one of the four criteria! Please select again")
     return null
@@ -45,4 +45,50 @@ if(upperConfirm === false && lowerConfirm === false && numberConfirm === false &
   }
   return passwordCriteria
 }
-
+// Passing the password criterias into the arrays.
+function generatePassword(){
+  var passOptions = criteria();
+  var result = []
+  var possible = []
+  var certain =[]
+  if (!passOptions) return null
+  
+  if (passOptions.upperConfirm){
+    possible = possible.concat(upperCase)
+    certain.push(getRandom(upperCase))
+  }
+  
+  if (passOptions.lowerConfirm) {
+    possible = possible.concat(lowerCase)
+    certain.push(getRandom(lowerCase))
+  }
+​
+  if (passOptions.numberConfirm) {
+    possible = possible.concat(number)
+    certain.push(getRandom(number))
+  }
+​
+  if (passOptions.symbolConfirm){
+    possible = possible.concat(symbols)
+    certain.push(getRandom(symbols))
+  }
+  for(var i = 0; i < passOptions.passwordLength; i++){
+    var possibleChar = getRandom(possible)
+    result.push(possibleChar)
+  }
+​
+  for(var i = 0; i < certain.length; i++){
+    result[i] = certain[i]
+  }
+​
+  return result.join('')
+}
+function getRandom(arr){
+  var randomIndex = Math.floor(Math.random() * arr.length)
+  var randomEl = arr[randomIndex]
+  return randomEl
+}
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  
