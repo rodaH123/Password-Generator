@@ -1,66 +1,25 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var password criteria = prompt(Here are your passowrd criterias)
+//Arrays
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var number = ["0", "1", "2", "3", "4","5", "6", "7", "8", "9"]
+var symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"]
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-//DOM elements
-const resultEl = document.getElementById('result');
-const lenghtEl = document.getElementById('lenght');
-const uppercaseEl = document.getElementById('uppercase');
-const lowercaseEl = document.getElementById('lowercase');
-const SymbolEl = document.getElementById('symbols');
-const generateEl = document.getElementById('generate');
-const clipboardEl = document.getElementById('result');
-
-
-const randomFunc = {
-  lower: getRandomLower,
-  upper:getRandomUpper,
-  Number:getRandomNumber,
-  Symbol:getRandomSymbol
-
-};
-
-// Generator function - 
-
-function getRandomLower() {
-  return String.fromCharcode(Math.floor(Math.random() * 26) + 97);
-}
-
-function getRandomUpper(){
-  return String.fromCharcode(Math.floor(Math.random() * 26) + 65)
-}
-
-function getRandomNumber() {
-  return String. fromCharcode(Math.floor(Math.random() * 26) + 48)
-}
-
-function getRandomSymbol() [
-  const symbols =" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
-  return symbols [Math.Floor(Math.random() *symbols.lenght:)};
+//Getting Password Length
+//Criteria for the password laying out the rules for the lenght of the password
+function criteria(){
+  var passwordLength = parseInt(prompt("How long do you want your password? It can only be between 8 and 128 character."))
+  if(Number.isNaN(passwordLength)){
+    alert("Must be a number")
+    return null
   }
-
-console.log(getRandomNumber())
-
-
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-const lenght = lenghtEl.value;
-const hasLower = lowercaseEl.ariaChecked
-const hasUpper = uppercaseEl.
-const hasNumber = SymbolEl.ariaChecked;
-
-
-
-console.log(lenght);
-
-function 
+  if (passwordLength < 8){
+    alert("Password must be 8 characters")
+    return null
+  }
+  if (passwordLength > 128){
+    alert("Pasword can't be more then 128 character")
+    return null
+  }
